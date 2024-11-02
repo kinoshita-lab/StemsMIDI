@@ -9,12 +9,15 @@
 #include "stemsmidi_knob.hpp"
 #include "stemsmidi_knob_table.h"
 
+#include "stemsmidi_switch.hpp"
+
 #include "stemsmidi_status.h"
 
 using namespace kinoshita_lab::stemsmidi;
 
 bool timer_callback(struct repeating_timer* t);
 void knob_callback(uint8_t knob_index, uint16_t value);
+void switch_callback(uint32_t switch_index, const int off_on);
 
 Adafruit_USBD_MIDI usb_midi;
 MIDI_CREATE_INSTANCE(Adafruit_USBD_MIDI, usb_midi, MIDI_USB);
@@ -28,6 +31,12 @@ Knobs knobs(
     pin_config::kA2,
     pin_config::kA3,
     knob_callback);
+
+Switchs<24, 4> switches(
+    pin_config::kNPL,
+    pin_config::kCP,
+    pin_config::kSerialOut,
+    switch_callback);
 
 Status status;
 
@@ -48,6 +57,12 @@ void knob_callback(uint8_t knob_index, uint16_t value)
     status.knob_last_values[knob_index] = table_applied_value;
 
     Serial.printf("Knob %d: %d\n", knob_index, table_applied_value);
+    Serial.flush();
+}
+
+void switch_callback(uint32_t switch_index, const int off_on)
+{
+    Serial.printf("Switch %d: %d\n", switch_index, off_on);
     Serial.flush();
 }
 
@@ -85,5 +100,6 @@ void loop()
         timer_fired = false;
 
         knobs.readKnobs();
+        switches.update();
     }
 }

@@ -6,7 +6,7 @@ namespace kinoshita_lab
 {
 namespace stemsmidi
 {
-// corresponds  to the circuit diagram for LED connection order
+// corresponds  to the circuit diagram for LED connection order(zigzag connection)
 enum LedId
 {
     kLed_DeckA_Drums_Volume,
