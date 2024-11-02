@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "**/frontmatter.json": "jsonc",
+    "**/.frontmatter/config/*.json": "jsonc",
+    ".fantomasignore": "ignore",
+    ".jsbeautifyrc": "json",
+    "*.js": "javascriptreact",
+    "*.rkt": "racket",
+    "*.tcc": "cpp"
+  },
+}
