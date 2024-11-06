@@ -21,6 +21,10 @@ class LedDisplay
         kDefaultColorFilter = 0x0362f2,
         kDefaultColorFxSend = 0xf94201,
     };
+    enum
+    {
+        kBrightness = 16,
+    };
 
 public:
     LedDisplay()
@@ -64,10 +68,31 @@ public:
         _ledStatus[kLed_DeckB_Vocals_Volume].color = kDefaultColorVolume;
 
         for (int i = 0; i < kNumLedIds; i++) {
-            _leds[i] = CRGB(_ledStatus[i].color);
-            _leds[i].maximizeBrightness(64);
+            _leds[i] = CRGB::Black;
+        }
+        FastLED.setBrightness(kBrightness);
+        FastLED.show();
+    }
+
+    void update()
+    {
+        for (int i = 0; i < kNumLedIds; i++) {
+            if (_ledStatus[i].off_on == false) {
+                _leds[i] = CRGB::Black;
+            } else {
+                _leds[i] = _ledStatus[i].color;
+            }
         }
         FastLED.show();
+    }
+
+    void setLed(const int led_id, const bool off_on)
+    {
+        if (led_id < 0 || led_id >= kNumLedIds) {
+            return;
+        }
+
+        _ledStatus[led_id].off_on = off_on;
     }
 
 private:
@@ -77,7 +102,7 @@ private:
     struct LedStatus
     {
         CRGB color;
-        uint8_t brightness;
+        bool off_on = false;
     };
     LedStatus _ledStatus[kNumLedIds];
 };

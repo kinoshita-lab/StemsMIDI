@@ -8,7 +8,13 @@ namespace stemsmidi
 {
 enum
 {
-    kNumTotalTweakableItems = 24,
+    kMidiChannel = 1,
+};
+enum
+{
+    kNumKnobs               = 24,
+    kNumSwitches            = 24,
+    kNumTotalTweakableItems = kNumKnobs + kNumSwitches,
 };
 
 namespace knob_table
