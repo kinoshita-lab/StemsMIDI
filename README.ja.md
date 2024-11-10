@@ -1,4 +1,6 @@
 # Traktor Stems用マイコン付属！ MIDIコントローラ開発キットさん
+![picture 1](images/90fe9efa438a586b2a142ccadcf6a3365e1b73369b2c3a177be453c0a366e1b7.png)  
+![picture 2](images/4d9c5061edd3527730e51c4f8d3e0bc7af639b3db9c1c84aa4b2f6da778b346d.png)  
 
 ## キットに含まれるもの
 
