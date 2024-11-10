@@ -29,4 +29,4 @@
 
 ## 使い方
 
-[StemsMIDI.tsi](./Traktor Setting/StemsMIDI.tsi) をTraktorにインポートしてご利用ください。
+[StemsMIDI.tsi](./Traktor\ Setting/StemsMIDI.tsi) をTraktorにインポートしてご利用ください。
