@@ -27,6 +27,6 @@
 5. タクトスイッチキャップをとりつけます。
 6. ゴム足をはりつけます。
 
-
 ## 使い方
-[[./Traktor Setting/StemsMIDI.tsi]] をTraktorにインポートしてご利用ください。
+
+[StemsMIDI.tsi](./Traktor Setting/StemsMIDI.tsi) をTraktorにインポートしてご利用ください。
