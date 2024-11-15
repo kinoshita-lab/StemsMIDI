@@ -89,7 +89,7 @@
 				(type "copper")
 				(thickness 0.035)
 			)
-			(layer "dielectric 1"
+			(layer "dielectric 2"
 				(type "core")
 				(thickness 1.51)
 				(material "FR4")
@@ -461,6 +461,17 @@
 		(uuid "58d268d5-59f0-4a57-8f27-2c8c8320e3ae")
 	)
 	(gr_circle
+		(center 58 149)
+		(end 59.6 149)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "606b06c4-cf06-42a9-b328-d3736f795183")
+	)
+	(gr_circle
 		(center 117.5 140.06336)
 		(end 120.7 140.06336)
 		(stroke
@@ -752,6 +763,17 @@
 		(fill none)
 		(layer "Edge.Cuts")
 		(uuid "ac470d2f-e72b-43e3-9e5a-e741156400ba")
+	)
+	(gr_circle
+		(center 155 149)
+		(end 156.6 149)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "b5dbac2e-f4b6-4d13-8726-35e47cda8e0f")
 	)
 	(gr_circle
 		(center 117.5 209.56336)
