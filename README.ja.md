@@ -37,27 +37,35 @@
 tips: ピンソケットを使わず、マイコンとピンヘッダを直接基板にはんだづけすることも可能です。用途に応じて、最初の手順を省いてください。
 
 - ピンソケット、ピンヘッダ、マイコンをはんだづけします。 まず、ピンソケットとピンヘッダを、下図のように組み合わせます。
+
 <img src="images/c11683a3c35204939dd786d694523f4b525355ddd5a23119c3f7ddc67c30a39e.png" width="500">
 
 - 組み合わせたものをマイコン左右の穴に挿入し、下図のように取りつけます。
+
 <img src="images/5beeb27816afa18ad8dd069d9c9414cf212e1c5a50bae3524996a1ad0b696709.png" width="500">
 
 - 基板の図の位置の穴に挿入します。
+
 <img src="images/9d322c537f8b335544344cd8a2cc5b920bac66dcbd63934a199c60fc65fa0f9f.png" width="500">
 
 この状態で、マイコンのピンをはんだづけします。
+
 <img src="images/6038161b53da7dc3d0ec92a8c922fd926f25249a085f5d71c1c7bdeaea71678c.png" width="500">
 
 このような状態になります。
+
 <img src="images/393fb5d819d65040379703d6e247d5ef396053703a45fa2a1eae8a15508ac9fc.png" width="500">
 
 - 再度、基板の図の位置の穴に挿入します。
+
 <img src="images/9d322c537f8b335544344cd8a2cc5b920bac66dcbd63934a199c60fc65fa0f9f.png" width="500">
 
 マイコンを押さえながら裏返しにし、机との間にノブを挟むなどして、自重で固定できるようにしながら裏返します。下図のようになります。
+
 <img src="images/fa603afa1ce076bc8d2b96c47375e37aeff4e16acc9f735b7ce772b9d4e3e5ce.png" width="500">
 
 ピンソケット(またはピンヘッダ)の足を全てはんだづけします。
+
 <img src="images/ddc43490427534982101d633568f0e675b127e7f4fbcef37d54b1cc8c4417cea.png" width="500">
 
 ### ケースの組みたて
@@ -65,23 +73,29 @@ tips: ピンソケットを使わず、マイコンとピンヘッダを直接�
 - 底用アクリル板の保護シートをはがし、6カ所のに、ナット、六角オネジ・メネジM3 5mm(短い方)をとりつけます。**次の工程のため、ゆるめにとりつけておいてください**。アクリルに裏表はありません。
 
 <img src="images/353b8dc77a7f0ab9deea103f4629dd094ac2d2ac35ea92f73048b18d0484d7bf.png" width="500">
+
 <img src="images/3ac4cbdde98af74f0cce6957054cb3b777a7afb91ab713df4ffe9abc72dfb181.png" width="500">
 
 - 基板を上に載せ、六角オネジ・メネジM3 10mm(長い方)を取りつけます。全体の位置を合わせながら、各ネジを少しずつ締めていきます。前工程でゆるめにとりつけたナットも、ここで締めていきます。どうしても合わない場合、リーマーでアクリルパネルを削るなどして、穴を広げてください。
+
 <img src="images/1e16f55000933cda29fe15d2064a4ddfe24624cdf75c29e829f8ace4760dae51.png" width="500">
 
 <img src="images/5affcbb84872de8d4f42be53c0941bd00284e82b639e03cf016ad98db60cfb2e.png" width="500">
 
 - 上用アクリル板を載せ、なべ小ねじで締めます。全体の位置を合わせながら、各ネジを少しずつ締めていきます。
+
 <img src="images/54e61845fd3b3c567229af5796d615cdf5245531f6204980dba667f84aea9ad8.png" width="500">
 
 - 底面にゴム足を貼りつけます。
+
 <img src="images/250c74b7f399b8d5f54edf250d41a127c9ddc31698e49df8d03a7017829ed84c.png" width="500">
 
 - ノブを取りつけます。
+
 <img src="images/e4e5d0f3ab611a4637d379048362ccbdaae4dab5ac585c91589651640e6fc288.png" width="500">
 
 - タクトスイッチキャップを取りつけます。
+
 <img src="images/583bcc246504249e1f59c90b10270863853a2a8c90c9fe83e984703308507fdd.png" width="500">
 
 ## 使い方
