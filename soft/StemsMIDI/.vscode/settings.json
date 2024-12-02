@@ -6,6 +6,7 @@
     ".jsbeautifyrc": "json",
     "*.js": "javascriptreact",
     "*.rkt": "racket",
-    "*.tcc": "cpp"
-  },
+    "*.tcc": "cpp",
+    "cstdint": "cpp"
+  }
 }
