@@ -1,4 +1,4 @@
-# Traktor Stems用マイコン付属！ MIDIコントローラ開発キットさん
+# STEMS MIDI Traktor Stems用MIDIコントローラ (開発キット)
 
 <img src = "images/90fe9efa438a586b2a142ccadcf6a3365e1b73369b2c3a177be453c0a366e1b7.png" width="350">
 <img src = "images/4d9c5061edd3527730e51c4f8d3e0bc7af639b3db9c1c84aa4b2f6da778b346d.png" width="500">
@@ -70,7 +70,7 @@ tips: ピンソケットを使わず、マイコンとピンヘッダを直接�
 
 ### ケースの組みたて
 
-底用アクリル板の保護シートをはがし、6カ所のに、ナット、六角オネジ・メネジM3 5mm(短い方)をとりつけます。アクリルに裏表はありません。
+底用アクリル板の保護シートをはがし、6カ所に、ナット、六角オネジ・メネジM3 5mm(短い方)をとりつけます。アクリルに裏表はありません。
 
 <img src="images/353b8dc77a7f0ab9deea103f4629dd094ac2d2ac35ea92f73048b18d0484d7bf.png" width="500">
 
@@ -99,5 +99,7 @@ tips: ピンソケットを使わず、マイコンとピンヘッダを直接�
 <img src="images/583bcc246504249e1f59c90b10270863853a2a8c90c9fe83e984703308507fdd.png" width="500">
 
 ## 使い方
+
+組みたてたものをPCに接続します。
 
 <https://github.com/kinoshita-lab/StemsMIDI/tree/main/Traktor%20Setting> にある.tsiファイルをTraktorにインポートしてご利用ください。
