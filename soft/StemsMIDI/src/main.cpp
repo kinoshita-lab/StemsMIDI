@@ -200,6 +200,9 @@ void handleCotrolChange(const byte channel, const byte number, const byte value)
 void setup()
 {
     // Manual begin() is required on core without built-in support e.g. mbed rp2040
+    TinyUSBDevice.setManufacturerDescriptor("Kinoshita Laboratory");
+    TinyUSBDevice.setProductDescriptor("Stems MIDI Controller");
+    TinyUSBDevice.setSerialDescriptor("0xdeadbeef");
     if (!TinyUSBDevice.isInitialized()) {
         TinyUSBDevice.begin(0);
     }
