@@ -5,6 +5,14 @@
 <img src = "images/90fe9efa438a586b2a142ccadcf6a3365e1b73369b2c3a177be453c0a366e1b7.png" width="350">
 <img src = "images/4d9c5061edd3527730e51c4f8d3e0bc7af639b3db9c1c84aa4b2f6da778b346d.png" width="500">
 
+## ChangeLog
+
+### Rev. 1.1
+
+- [Hardware] Remove center-click feature for Vol and Effect knobs
+- [Hardware] Add testing terminals on PCB
+- [Software] Add Information shown when connectiong to PC
+
 ## Kit Contents
 
 <img src = "images/1d4c8b63cd5421fc718316e5a197efda357b795f54dc7dd9b1c2264ad3c7edcb.png" width="500">
@@ -110,3 +118,5 @@ Place tactile switch caps:
 
 - Connect the product to PC/MAC.
 - Import .tsi file below on Traktor.
+
+<https://github.com/kinoshita-lab/StemsMIDI/tree/main/Traktor%20Setting>
