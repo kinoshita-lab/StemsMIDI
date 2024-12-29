@@ -5,11 +5,12 @@
 
 ## ChangeLog
 
-### Rev. 1.1
+### ソフトウェア
+releases(https://github.com/kinoshita-lab/StemsMIDI/releases)
 
-- [Hardware] Filter 意外はセンタークリックではなくなりました
-- [Hardware] 基板に検査用端子が追加されました
-- [Software] USB接続時の製品情報をクリアにしました
+### ハードウェア Rev. 1.1
+- Filter 意外はセンタークリックではなくなりました
+- 基板に検査用端子が追加されました
 
 ## キットに含まれるもの
 
