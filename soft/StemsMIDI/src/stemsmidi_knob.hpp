@@ -107,6 +107,11 @@ public:
         // prepare for next knob
         updateKnobIndex();
     }
+
+    void setHandler(KnobCallback callback)
+    {
+        knob_callback_ = callback;
+    }
 };
 } // namespace stemsmidi
 } // namespace kinoshita_lab

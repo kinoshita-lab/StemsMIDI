@@ -35,6 +35,7 @@ struct Status
         return switch_index + kNumKnobs;
     }
 };
+extern Status status;
 } // namespace stemsmidi
 } // namespace kinoshita_lab
 

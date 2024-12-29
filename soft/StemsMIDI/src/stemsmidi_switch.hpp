@@ -22,6 +22,7 @@ public:
         LoadStart,
         ReadEachBits,
         WaitNext,
+        NumNormalStates,
         UnknownState = 0xff,
     };
 
@@ -43,6 +44,11 @@ public:
         pinMode(output_pin, INPUT_PULLUP);
 
         setState(Init);
+    }
+
+    void setHandler(SwitchHandler handler)
+    {
+        handler_ = handler;
     }
 
     virtual ~Switchs()
@@ -74,7 +80,7 @@ public:
         case WaitNext: {
             const auto current = millis();
             const auto delta   = current - wait_start_;
-            if (delta > scan_period_) {
+            if (delta >= scan_period) {
                 setState(LoadStart);
             }
         } break;
@@ -83,6 +89,26 @@ public:
         }
         }
     };
+
+    void forceScan()
+    {
+        // scan 2 times just in case for robustness
+        for (auto i = 0; i < 4; ++i) {
+            for (auto i = 0; i < NumNormalStates; ++i) {
+                update();
+                delay(scan_period);
+            }
+        }
+    }
+
+    bool switchIsOn(const uint32_t switch_index) const
+    {
+        if (switch_index >= num_switches) {
+            return false;
+        }
+
+        return switch_status_[switch_index] == 0;
+    }
 
 protected:
     uint8_t status_          = UnknownState;
@@ -160,7 +186,6 @@ protected:
     uint8_t former_scan_buffers_[num_switches] = {0};
     uint8_t switch_status_[num_switches]       = {0};
     uint32_t wait_start_                       = 0;
-    uint32_t scan_period_                      = 0;
 
 private:
     Switchs(const Switchs&) {}

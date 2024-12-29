@@ -74,6 +74,15 @@ public:
         FastLED.show();
     }
 
+    void setColor(const int led_id, const CRGB color)
+    {
+        if (led_id < 0 || led_id >= kNumLedIds) {
+            return;
+        }
+
+        _ledStatus[led_id].color = color;
+    }
+
     void update()
     {
         for (int i = 0; i < kNumLedIds; i++) {

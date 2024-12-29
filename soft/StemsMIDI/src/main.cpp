@@ -2,24 +2,25 @@
 #include <Arduino.h>
 #include <MIDI.h>
 #include <pico/stdlib.h>
+#include <functional>
 
 #include "stemsmidi_pin_config.h"
-
 #include "stemsmidi_led_display.hpp"
 #include "stemsmidi_knob.hpp"
 #include "stemsmidi_knob_table.h"
-
+#include "stemsmidi_switch_ids.h"
 #include "stemsmidi_switch.hpp"
-
 #include "stemsmidi_status.h"
-
 #include "stemsmidi_cc_numbers.h"
+#include "stemsmidi_product_test.h"
+#include "stemsmidi_device_instances.h"
 
 using namespace kinoshita_lab::stemsmidi;
 
 bool timer_callback(struct repeating_timer* t);
 void knob_callback(uint8_t knob_index, uint16_t value);
 void switch_callback(uint32_t switch_index, const int off_on);
+void main_loop();
 
 Adafruit_USBD_MIDI usb_midi;
 MIDI_CREATE_INSTANCE(Adafruit_USBD_MIDI, usb_midi, MIDI_USB);
@@ -78,25 +79,11 @@ int8_t switchToCCTable[kNumSwitches] = {
     cc_numbers::kDeckB_Slot4_FxSend_OnOff,
 };
 
-LedDisplay<pin_config::kNeopixel> led_display;
-Knobs knobs(
-    pin_config::kS0,
-    pin_config::kS1,
-    pin_config::kS2,
-    pin_config::kA1,
-    pin_config::kA2,
-    pin_config::kA3,
-    knob_callback);
-
-Switchs<24, 4> switches(
-    pin_config::kNPL,
-    pin_config::kCP,
-    pin_config::kSerialOut,
-    switch_callback);
-
-Status status;
 bool timer_fired = false;
 struct repeating_timer timer;
+
+std::function<void()> main_loop_function                             = nullptr;
+std::function<bool(struct repeating_timer*)> timer_callback_function = nullptr;
 
 bool timer_callback(struct repeating_timer* t)
 {
@@ -123,11 +110,9 @@ void switch_callback(uint32_t switch_index, const int off_on)
     const auto index                        = status.getSwitchMidiMessageSlotIndex(switch_index);
     status.midi_messages[index].should_send = true;
     status.midi_messages[index].value       = off_on ? 0 : 127;
-    Serial.printf("switch_index: %d, off_on: %d\n", switch_index, off_on);
-    Serial.flush();
 }
 
-void handleCotrolChange(const byte channel, const byte number, const byte value)
+void handle_control_change(const byte channel, const byte number, const byte value)
 {
     if (channel != kMidiChannel) {
         return;
@@ -197,6 +182,22 @@ void handleCotrolChange(const byte channel, const byte number, const byte value)
     }
 }
 
+void set_test_mode()
+{
+    main_loop_function = product_test::test_loop;
+    switches.setHandler(product_test::switch_callback);
+    knobs.setHandler(product_test::knob_callback);
+    product_test::initialize();
+}
+
+void set_normal_mode()
+{
+    Serial.end();
+    main_loop_function = main_loop;
+    switches.setHandler(switch_callback);
+    knobs.setHandler(knob_callback);
+}
+
 void setup()
 {
     // Manual begin() is required on core without built-in support e.g. mbed rp2040
@@ -206,7 +207,6 @@ void setup()
     if (!TinyUSBDevice.isInitialized()) {
         TinyUSBDevice.begin(0);
     }
-    Serial.begin(115200);
 
     usb_midi.setStringDescriptor("Kinoshita Lab. Stems MIDI");
 
@@ -229,14 +229,34 @@ void setup()
         status.midi_messages[Status::getSwitchMidiMessageSlotIndex(i)].cc_number = switchToCCTable[i];
     }
 
+    // initial switch scan, to determine whether product testing should perform
+    switches.forceScan();
+    const auto deckADrumsVolSwitchOn    = switches.switchIsOn(kSwitch_DeckA_Drums_Volume);
+    const auto deckADrumsFilterSwitchOn = switches.switchIsOn(kSwitch_DeckA_Drums_Filter);
+    // enter test mode if both deck A drums volume and filter switches are on
+    if (deckADrumsVolSwitchOn && deckADrumsFilterSwitchOn) {
+        Serial.begin(115200);
+        set_test_mode();
+    } else {
+        set_normal_mode();
+    }
+
+    product_test::set_test_finish_callback(set_normal_mode);
+
     // start timer(500us)
     add_repeating_timer_us(500, timer_callback, NULL, &timer);
 
-    MIDI_USB.setHandleControlChange(handleCotrolChange);
+    MIDI_USB.setHandleControlChange(handle_control_change);
+
+    // failsafe just in case.. do not want to check existence of main_loop_function in loop() every time
+    if (!main_loop_function) {
+        main_loop_function = main_loop;
+    }
 }
 
 void loop()
 {
+    // common implementation
 #ifdef TINYUSB_NEED_POLLING_TASK
     // Manual call tud_task since it isn't called by Core's background
     TinyUSBDevice.task();
@@ -248,6 +268,17 @@ void loop()
         switches.update();
     }
 
+    main_loop_function();
+
+    // update led display
+    if (status.updateLed) {
+        status.updateLed = false;
+        led_display.update();
+    }
+}
+
+void main_loop()
+{
     // send midi messages
     for (auto i = 0; i < kNumTotalTweakableItems; i++) {
         if (status.midi_messages[i].should_send) {
@@ -258,10 +289,4 @@ void loop()
     }
     // receive midi messages
     MIDI_USB.read();
-
-    // update led display
-    if (status.updateLed) {
-        status.updateLed = false;
-        led_display.update();
-    }
 }
