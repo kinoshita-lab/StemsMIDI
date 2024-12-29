@@ -112,3 +112,22 @@ tips: ピンソケットを使わず、マイコンとピンヘッダを直接�
 組みたてたものをPCに接続します。
 
 <https://github.com/kinoshita-lab/StemsMIDI/tree/main/Traktor%20Setting> にある.tsiファイルをTraktorにインポートしてご利用ください。
+
+## ソフトウェアのアップデート方法
+
+必要なもの:
+
+- <https://github.com/kinoshita-lab/StemsMIDI/releases> からダウンロードした、最新の firmware.uf2 ファイル
+- PC または mac
+
+マイコンの右下にある、 **B** ボタンを押しながらUSBケーブルを接続してください。
+<img src="images/e19027d6f086a4644d27f2b9769c1e3397cf6c2087aafc610723d300e9c7c1cd.png" width="500">  
+
+ボタンを離すと、ディスクドライブがPCかmac上に表示されます。ドライブ名は `RP-RP2` です。
+
+<img src="images/bf1520c566c5de22c337de67e731d20b3598cbcd04bb74f23b3b1ca731d23071.png" width="800">
+
+firmware.uf2をディスクドライブにコピーします。
+<img src="images/74f0b672524e00f077c3da002e40ae39b642285c653c3a923f2d02379d6dfd68.png" width="800">
+
+アップデートは以上で完了です。ドライブの表示は自動的に閉じます。
