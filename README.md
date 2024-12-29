@@ -6,12 +6,12 @@
 <img src = "images/4d9c5061edd3527730e51c4f8d3e0bc7af639b3db9c1c84aa4b2f6da778b346d.png" width="500">
 
 ## ChangeLog
+### Software
+releases (https://github.com/kinoshita-lab/StemsMIDI/releases)
 
-### Rev. 1.1
-
+### Hardware Rev. 1.1
 - [Hardware] Remove center-click feature for Vol and Effect knobs
 - [Hardware] Add testing terminals on PCB
-- [Software] Add Information shown when connectiong to PC
 
 ## Kit Contents
 
