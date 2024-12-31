@@ -192,7 +192,6 @@ void set_test_mode()
 
 void set_normal_mode()
 {
-    Serial.end();
     main_loop_function = main_loop;
     switches.setHandler(switch_callback);
     knobs.setHandler(knob_callback);
@@ -200,6 +199,7 @@ void set_normal_mode()
 
 void setup()
 {
+    Serial.begin(115200);
     // Manual begin() is required on core without built-in support e.g. mbed rp2040
     TinyUSBDevice.setManufacturerDescriptor("Kinoshita Laboratory");
     TinyUSBDevice.setProductDescriptor("Stems MIDI Controller");
@@ -233,9 +233,9 @@ void setup()
     switches.forceScan();
     const auto deckADrumsVolSwitchOn    = switches.switchIsOn(kSwitch_DeckA_Drums_Volume);
     const auto deckADrumsFilterSwitchOn = switches.switchIsOn(kSwitch_DeckA_Drums_Filter);
-    // enter test mode if both deck A drums volume and filter switches are on
+    // enter test mode if both deck A drums volume and filter switches are on.
     if (deckADrumsVolSwitchOn && deckADrumsFilterSwitchOn) {
-        Serial.begin(115200);
+
         set_test_mode();
     } else {
         set_normal_mode();
