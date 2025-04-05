@@ -93,7 +93,7 @@ bool timer_callback(struct repeating_timer* t)
 
 void knob_callback(uint8_t knob_index, uint16_t value)
 {
-    const auto table_applied_value = knob_table::apply(value);
+    const auto table_applied_value = knob_table::apply(knob_index, value);
     if (status.knob_scanned_value[knob_index] == table_applied_value) {
         return;
     }

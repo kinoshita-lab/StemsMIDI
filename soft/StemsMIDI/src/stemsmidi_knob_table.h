@@ -10,11 +10,12 @@ namespace stemsmidi
 {
 namespace knob_table
 {
+    
 /**
 * @param  input: 0 - 511
 * @retval 0 - 127(for MIDI)
 */
-uint8_t apply(const uint16_t input);
+uint8_t apply(const uint8_t knob_index, const uint16_t input);
 } // namespace knob_table
 } // namespace stemsmidi
 } // namespace kinoshita_lab
